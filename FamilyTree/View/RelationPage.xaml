@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FamilyTree.View.RelationPage"
+             >
+    <VerticalStackLayout>
+        <Label 
+            Text="This is all saved data until now"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+        <Frame HeightRequest="300">
+            <ScrollView>
+            <CollectionView ItemsSource="{Binding People}">
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout Orientation="Vertical" Span="4" />
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                <DataTemplate>
+                            <Frame>
+                            <VerticalStackLayout>
+                                <Label Text="Person Id"/>
+                                <Label Text="{Binding Id}"/>
+                                <Label Text="Father Id"/>
+                                <Label Text="{Binding FatherId}"/>
+                                <Label Text="Mother Id"/>
+                                <Label Text="{Binding MotherId}"/>
+                                <Label Text="Wife Id"/>
+                                <Label Text="{Binding WifeId}"/>
+                            </VerticalStackLayout>
+                            </Frame>
+                        </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            </ScrollView>
+        </Frame>
+        <StackLayout Margin="0,10,0,4" >
+            <Button Text="Delete all" Command="{Binding DeleteButtonCLickedCommand}" HeightRequest="40" WidthRequest="100"  />
+        </StackLayout>
+        <StackLayout>
+            <Button Text="Go Back" Command="{Binding BackButtonCLickedCommand}" HeightRequest="40" WidthRequest="100"  />
+        </StackLayout>
+        <Frame>
+            <VerticalStackLayout>
+                <Entry x:Name="PersonIdEntry"  Text="{Binding SearchEntity}" Placeholder="Enter Person ID" Keyboard="Numeric"/>
+                <Button Text="Show Relation" Command="{Binding ShowAssociatedRelationCommand}"/>
+            </VerticalStackLayout>
+        </Frame>
+        
+    </VerticalStackLayout>
+</ContentPage>
