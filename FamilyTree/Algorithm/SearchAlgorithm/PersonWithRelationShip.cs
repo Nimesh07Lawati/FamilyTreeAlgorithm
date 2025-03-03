@@ -23,18 +23,18 @@ namespace FamilyTree.Algorithm.SearchAlgorithm
         {
             visited ??= new HashSet<int>();  // Initialize visited set if not provided
 
-            // If we've already visited this person, stop recursion to prevent infinite loops
+           
             if (visited.Contains(personId))
-                return null;  // Prevent further recursion (circular reference detected)
+                return null; 
 
-            // Mark the current person ID as visited
+            
             visited.Add(personId);
 
-            // Fetch the person from the database
+          
             var person = _databaseContext.GetPersonById(personId);
             if (person == null) return null;  // Return null if no person is found
 
-            // Recursively fetch relationships
+          
             if (person.FatherId.HasValue)
             {
                 person.Father = GetPersonWithRelationships(person.FatherId.Value, visited);  // Pass visited set
@@ -44,13 +44,13 @@ namespace FamilyTree.Algorithm.SearchAlgorithm
             {
                 person.Mother = GetPersonWithRelationships(person.MotherId.Value, visited);  // Pass visited set
             }
-
             if (person.WifeId.HasValue)
             {
                 person.Wife = GetPersonWithRelationships(person.WifeId.Value, visited);  // Pass visited set
             }
 
-            return person;  // Return the fully populated person object
+
+            return person;  
         }
     }
 }
