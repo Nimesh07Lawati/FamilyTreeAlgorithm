@@ -23,7 +23,6 @@ public partial class RelationPageViewModel : BindableObject
     public ICommand RelationCommand { get; set; }
     public ICommand ShowAssociatedRelationCommand { get; set; }
     public ICommand DeleteButtonCLickedCommand { get; set; }
-    public ICommand FindRelationshipCommand { get; set; }
     public ICommand BackButtonCLickedCommand { get; set; }
     public ObservableCollection<Person> People { get; set; }
     public ObservableCollection<Person> People1{ get; set; }
@@ -37,31 +36,11 @@ public partial class RelationPageViewModel : BindableObject
         _personSearch = new PersonWithRelationShip();
         DeleteButtonCLickedCommand = new Command(OnDeleteClicked);
         BackButtonCLickedCommand = new Command(OnBackButtonClicked);
-        FindRelationshipCommand = new Command(OnFindRelationshipButtonClicked);
         ShowAssociatedRelationCommand = new Command(OnShowAssociatedRelationButtonClicked);
 
     }
-    private void OnFindRelationshipButtonClicked()
-    {
-        try
-        {
-
-            var grandfather = _database.GetPersonById(10);
-            if (grandfather != null)
-            {
-                Application.Current.MainPage.DisplayAlert("ok", "Found", "ok");
-            }
-            else
-            {
-                Application.Current.MainPage.DisplayAlert("No No", "Not Found", "ok");
-            }
-        }
-        catch (Exception ex)
-        {
-            // Log or display the actual error message for debugging
-            Application.Current.MainPage.DisplayAlert("Error", $"An error occurred: {ex.Message}", "OK");
-        }
-    }
+    
+    
     public void OnShowAssociatedRelationButtonClicked()
     {
         try
@@ -105,6 +84,19 @@ public partial class RelationPageViewModel : BindableObject
         // Add the main person's details
         relationships.AppendLine($"Name: {person.Name} (ID: {person.Id})");
 
+
+        // Add the Mother's details (If available)
+        if (person.Mother != null)
+        {
+            relationships.AppendLine($"Mother: {person.Mother.Name} (ID: {person.Mother.Id})");
+            // Recursively add Mother's relationships if needed
+            if (person.Mother.Father != null)
+                relationships.AppendLine($"  Grandfather (Mother's side): {person.Mother.Father.Name}");
+            if (person.Mother.Mother != null)
+                relationships.AppendLine($"  Grandmother (Mother's side): {person.Mother.Mother.Name}");
+        }
+        else
+            relationships.AppendLine("Mother: Not available sorry buddy");
         // Add the Father's details (If available)
         if (person.Father != null)
         {
@@ -118,18 +110,7 @@ public partial class RelationPageViewModel : BindableObject
         else
             relationships.AppendLine("Father: Not available");
 
-        // Add the Mother's details (If available)
-        if (person.Mother != null)
-        {
-            relationships.AppendLine($"Mother: {person.Mother.Name} (ID: {person.Mother.Id})");
-            // Recursively add Mother's relationships if needed
-            if (person.Mother.Father != null)
-                relationships.AppendLine($"  Grandfather (Mother's side): {person.Mother.Father.Name}");
-            if (person.Mother.Mother != null)
-                relationships.AppendLine($"  Grandmother (Mother's side): {person.Mother.Mother.Name}");
-        }
-        else
-            relationships.AppendLine("Mother: Not available");
+     
 
         // Add the Wife's details (If available)
         if (person.Wife != null)

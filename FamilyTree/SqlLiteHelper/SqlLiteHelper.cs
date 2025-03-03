@@ -17,11 +17,60 @@ namespace FamilyTree.SqlLiteHelper
             {//this is git hub test
                 _database = new SQLiteConnection(dbPath);
                 _database.CreateTable<Person>(); // Create the table if it doesn't exist
+                _database.CreateTable<FirstPerson>();
             }
             catch (Exception ex)
             {
                 // Log or handle error if the database initialization fails
                 throw new Exception("Database initialization failed", ex);
+            }
+        }
+        public FirstPerson GetFirstPersonById(int id) {
+            try
+            {
+                return _database.Find<FirstPerson>(id);
+            }
+            catch (Exception ex)
+            {
+                // Log or handle error for retrieving a person
+                throw new Exception($"Failed to get person with ID {id}", ex);
+            }
+        }
+
+        public void SaveFirstPerson(FirstPerson person)
+        {
+            try
+            {
+                _database.InsertOrReplace(person);
+            }
+            catch (Exception ex)
+            {
+                // Log or handle error for saving a person
+                throw new Exception("Failed to save person", ex);
+            }
+        }
+        public List<FirstPerson> GetAllFirstPerson()
+        {
+            try
+            {
+                return _database.Table<FirstPerson>().ToList();
+            }
+            catch (Exception ex)
+            {
+                // Log or handle error for fetching all people
+                throw new Exception("Failed to get all people", ex);
+            }
+        }
+        public void DeleteAllFirstPerson()
+        {
+            try
+            {
+                _database.DeleteAll<FirstPerson>();
+            }
+            catch (Exception ex)
+            {
+                // Log or handle error for deleting all people
+                throw new Exception("Failed to delete all people", ex);
             }
         }
 
