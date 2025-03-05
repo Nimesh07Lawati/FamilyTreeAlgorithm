@@ -1,4 +1,5 @@
 ﻿using FamilyTree.View;
+using UraniumUI;
 using FamilyTree.ViewModel;
 using Microsoft.Extensions.Logging;
 
@@ -15,11 +16,12 @@ namespace FamilyTree
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
-                });
+                })
+                .UseUraniumUI()  // Ensure UraniumUI is installed and referenced
+              .UseUraniumUIMaterial(); // Ensure UraniumUI.Material is installed and referenced
             builder.Services.AddSingleton<MainPageView>();
             builder.Services.AddSingleton<MainPageViewModel>();
-            builder.Services.AddSingleton<RelationPageViewModel>();
-            builder.Services.AddSingleton<RelationPage>();
+
 
 #if DEBUG
             builder.Logging.AddDebug();

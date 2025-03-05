@@ -4,10 +4,12 @@ namespace FamilyTree.View;
 
 public partial class MainPageView : ContentPage
 {
-
+	private readonly MainPageViewModel _viewModel;
 	public MainPageView()
 	{
 		InitializeComponent();
-	BindingContext=new MainPageViewModel();
+		_viewModel = new MainPageViewModel();
+		BindingContext=_viewModel;
+		
 	}
 }

@@ -7,9 +7,7 @@ namespace FamilyTree
         public AppShell()
         {
             InitializeComponent();
-            Routing.RegisterRoute("FirstPersonPage", typeof(FirstPersonPage));
-            Routing.RegisterRoute("MainPageView",typeof(MainPageView));
-            Routing.RegisterRoute("RelationPageView", typeof(RelationPage));
+            Routing.RegisterRoute("MainPage", typeof(MainPageView));
         }
     }
 }

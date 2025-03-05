@@ -2,56 +2,71 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="FamilyTree.View.MainPageView"
-          
-             >
-    <VerticalStackLayout>
-        <Label Text="Family Tree" 
-               FontSize="24" 
-               FontFamily="OpenSansSemibold"
-               HorizontalOptions="Center" 
-               VerticalOptions="Start" 
-               TextColor="White"/>
+                   xmlns:material="http://schemas.enisn-projects.io/dotnet/maui/uraniumui/material"
+      xmlns:uranium="http://schemas.enisn-projects.io/dotnet/maui/uraniumui"
+          >
+    <ScrollView>
+    <VerticalStackLayout HorizontalOptions="Center">
+            
+        <Frame WidthRequest="600" Margin="0,5,0,0">
+        
+        <VerticalStackLayout WidthRequest="300">
+                <Label Text="Add Person" FontAttributes="Bold" HorizontalOptions="Center"/>
+                    <material:TextField Title="Person Id"
+      AccentColor="Black"
+      Text="{Binding PersonEntityID}"
+      BackgroundColor="White"
+      AllowClear="True"
+      BorderColor="Black"
+      TitleColor="#283618" />
 
-        <Frame WidthRequest="900" BackgroundColor="White" Opacity="0.8">
-            <VerticalStackLayout Padding="20">
-                <!-- Person ID and Name -->
-                <Label Text="Person ID" TextColor="Black"/>
-                <Entry x:Name="PersonIdEntry" Text="{Binding PersonId}" Placeholder="Enter Person ID" Keyboard="Numeric"/>
+                    <material:TextField Title="Name"
+  AccentColor="Black"
+  Text="{Binding PersonName}"
+  BackgroundColor="White"
+  AllowClear="True"
+  BorderColor="Black"
+  TitleColor="#283618" />
 
-                <Label Text="Person Name" TextColor="Black"/>
-                <Entry x:Name="PersonNameEntry" Text="{Binding Name}" Placeholder="Enter Person Name"/>
+                    <material:TextField Title="Gender"
+  AccentColor="Black"
+  Text="{Binding Gender}"
+  BackgroundColor="White"
+  AllowClear="True"
+  BorderColor="Black"
+  TitleColor="#283618" />
 
-                <!-- Father ID and Name -->
-                <Label Text="Father ID" TextColor="Black"/>
-                <Entry x:Name="FatherIdEntry" Text="{Binding FatherId}" Placeholder="Enter Father ID" Keyboard="Numeric"/>
+                    <material:TextField Title="Address"
+  AccentColor="Black"
+  Text="{Binding AddressOfPerson}"
+  BackgroundColor="White"
+  AllowClear="True"
+  BorderColor="Black"
+  TitleColor="#283618" />
 
-                <Label Text="Father's Name" TextColor="Black"/>
-                <Entry x:Name="FatherNameEntry" Text="{Binding FatherName}" Placeholder="Enter Father's Name"/>
+                    <material:TextField Title="Date Of Birth"
+AccentColor="Black"
+Text="{Binding DateOfBirth}"
+BackgroundColor="White"
+AllowClear="True"
+BorderColor="Black"
+TitleColor="#283618" />
 
-                <!-- Mother ID and Name -->
-                <Label Text="Mother ID" TextColor="Black"/>
-                <Entry x:Name="MotherIdEntry" Text="{Binding MotherId}" Placeholder="Enter Mother ID" Keyboard="Numeric"/>
+                    <Button Margin="0,5,0,0" WidthRequest="200" Text="Submit" Command="{Binding OnSubmitClickedCommand}" />
 
-                <Label Text="Mother's Name" TextColor="Black"/>
-                <Entry x:Name="MotherNameEntry" Text="{Binding MotherName}" Placeholder="Enter Mother's Name"/>
-
-                <!-- Wife ID and Name -->
-                <Label Text="Wife ID" TextColor="Black"/>
-                <Entry x:Name="WifeIdEntry" Text="{Binding WifeId}" Placeholder="Enter Wife ID" Keyboard="Numeric"/>
-
-                <Label Text="Wife's Name" TextColor="Black"/>
-                <Entry x:Name="WifeNameEntry" Text="{Binding WifeName}" Placeholder="Enter Wife's Name"/>
-
-                <!-- Buttons -->
-                <StackLayout Margin="0,10,0,4">
-                    <Button Text="Submit" TextColor="Black" FontAttributes="Bold" Command="{Binding ButtonCLickedCommand}" HeightRequest="40" WidthRequest="100"/>
-                </StackLayout>
-                <StackLayout>
-                    <Button Text="View Data" TextColor="Black" FontAttributes="Bold" Command="{Binding GoToRelationPage}" HeightRequest="40" WidthRequest="100"/>
-                </StackLayout>
             </VerticalStackLayout>
+             
         </Frame>
 
+            <StackLayout Spacing="6" Margin="0,10,0,0">
+                <Label HorizontalOptions="Center" Text=" Add Direct Relation" />
+                <Button Text="Add" WidthRequest="200" Command="{Binding OnDirectRelationClickedCommand}"/>
+                <Label HorizontalOptions="Center" Text=" Add InDirect Relation"/>
+                <Button Text="Add" WidthRequest="200"/>
+            </StackLayout>
 
-    </VerticalStackLayout>
+        </VerticalStackLayout>
+    
+
+    </ScrollView>
 </ContentPage>
