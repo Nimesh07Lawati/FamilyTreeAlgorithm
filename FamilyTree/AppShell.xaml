@@ -10,11 +10,6 @@
     <ShellContent
       ContentTemplate="{DataTemplate local:MainPageView}"
       Route="MainPage" />
-    <ShellContent
-     ContentTemplate="{DataTemplate local:FirstPersonPage}"
-     Route="FirstPersonPage" />
+   
   
-    <ShellContent
-    ContentTemplate="{DataTemplate local:RelationPage}"
-    Route="RelationPage" />
 </Shell>
