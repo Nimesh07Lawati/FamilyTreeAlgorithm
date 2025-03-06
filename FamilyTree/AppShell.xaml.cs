@@ -8,6 +8,10 @@ namespace FamilyTree
         {
             InitializeComponent();
             Routing.RegisterRoute("MainPage", typeof(MainPageView));
+            Routing.RegisterRoute("DirectRelationPage", typeof(DirectRelationView));
+            Routing.RegisterRoute("IndirectRelationPage", typeof(IndirectRelationView));
+            Routing.RegisterRoute("DataPageView", typeof(DAtaPageView));
+
         }
     }
 }

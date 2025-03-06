@@ -10,6 +10,17 @@
     <ShellContent
       ContentTemplate="{DataTemplate local:MainPageView}"
       Route="MainPage" />
-   
-  
+
+    <ShellContent
+      ContentTemplate="{DataTemplate local:DirectRelationView}"
+      Route="DirectRelationPage" />
+
+    <ShellContent
+      ContentTemplate="{DataTemplate local:IndirectRelationView}"
+      Route="IndirectRelationPage" />
+    <ShellContent
+  ContentTemplate="{DataTemplate local:DAtaPageView}"
+  Route="DataPageView" />
+
+
 </Shell>

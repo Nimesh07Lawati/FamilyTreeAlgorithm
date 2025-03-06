@@ -7,7 +7,7 @@ using Microsoft.Maui.Controls;
 
 namespace FamilyTree.ViewModel;
 
-public class MainPageViewModel : BindableObject
+public partial class MainPageViewModel : BindableObject
 {
     private readonly DataBaseHelper _dataBaseHelper;
 
@@ -16,6 +16,8 @@ public class MainPageViewModel : BindableObject
         _dataBaseHelper = new DataBaseHelper();
         SubmitCommand = new Command(OnSubmitClicked);
         DirectRelationCommand = new Command(OnDirectRelationClicked);
+        InDirectRelationCommand = new Command(OnIndirectRelationClicked);
+        ShowDataCommand = new Command(OnShowDataClicked);
     }
 
     private int _personEntityID;
@@ -90,9 +92,20 @@ public class MainPageViewModel : BindableObject
 
     public ICommand SubmitCommand { get; }
     public ICommand DirectRelationCommand { get; }
-
+    public ICommand InDirectRelationCommand { get; }
+    public ICommand ShowDataCommand { get; }
+     
+    private void OnIndirectRelationClicked()
+    {
+        Shell.Current.GoToAsync("///IndirectRelationPage");
+    }
     private void OnSubmitClicked()
     {
+        if(AddressOfPerson==null|| Gender==null||DateOfBirth==null||PersonName==null)
+        {
+            Application.Current.MainPage.DisplayAlert("!!", "please fill all the fields","ok");
+            return;
+        }
         try
         {
             Application.Current.MainPage.DisplayAlert("Hurray", "It is not working", "OK");
@@ -114,6 +127,10 @@ public class MainPageViewModel : BindableObject
 
     private void OnDirectRelationClicked()
     {
-        Application.Current.MainPage.DisplayAlert("ok", "ok", "ok");
+        Shell.Current.GoToAsync("///DirectRelationPage");
+    }
+    public void OnShowDataClicked()
+    {
+        Shell.Current.GoToAsync("///DataPageView");
     }
 }

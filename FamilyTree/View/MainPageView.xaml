@@ -2,71 +2,67 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="FamilyTree.View.MainPageView"
-                   xmlns:material="http://schemas.enisn-projects.io/dotnet/maui/uraniumui/material"
-      xmlns:uranium="http://schemas.enisn-projects.io/dotnet/maui/uraniumui"
-          >
+             xmlns:material="http://schemas.enisn-projects.io/dotnet/maui/uraniumui/material"
+             xmlns:uranium="http://schemas.enisn-projects.io/dotnet/maui/uraniumui"
+             BackgroundImageSource="background.png">
+
     <ScrollView>
-    <VerticalStackLayout HorizontalOptions="Center">
-            
-        <Frame WidthRequest="600" Margin="0,5,0,0">
-        
-        <VerticalStackLayout WidthRequest="300">
-                <Label Text="Add Person" FontAttributes="Bold" HorizontalOptions="Center"/>
-                    <material:TextField Title="Person Id"
-      AccentColor="Black"
-      Text="{Binding PersonEntityID}"
-      BackgroundColor="White"
-      AllowClear="True"
-      BorderColor="Black"
-      TitleColor="#283618" />
+        <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center">
+
+            <Frame WidthRequest="600" Margin="0,5,0,0" BackgroundColor="#80FFFFFF" Padding="20" CornerRadius="15">
+
+                <VerticalStackLayout Spacing="10" VerticalOptions="Center">
+                    <Label Text="Add Person" TextColor="White" FontAttributes="Bold" HorizontalOptions="Center"/>
+
+                    
 
                     <material:TextField Title="Name"
-  AccentColor="Black"
-  Text="{Binding PersonName}"
-  BackgroundColor="White"
-  AllowClear="True"
-  BorderColor="Black"
-  TitleColor="#283618" />
+                        AccentColor="White"
+                        Text="{Binding PersonName}"
+                        BackgroundColor="#80FFFFFF"
+                        AllowClear="True"
+                        BorderColor="White"
+                        TitleColor="#283618" 
+                                       />
 
                     <material:TextField Title="Gender"
-  AccentColor="Black"
+                      AccentColor="White"
   Text="{Binding Gender}"
-  BackgroundColor="White"
+  BackgroundColor="#80FFFFFF"
   AllowClear="True"
-  BorderColor="Black"
+  BorderColor="white"
   TitleColor="#283618" />
 
                     <material:TextField Title="Address"
-  AccentColor="Black"
-  Text="{Binding AddressOfPerson}"
-  BackgroundColor="White"
-  AllowClear="True"
-  BorderColor="Black"
-  TitleColor="#283618" />
+                        AccentColor="#80FFFFFF"
+                        Text="{Binding AddressOfPerson}"
+                        BackgroundColor="#80FFFFFF"
+                        AllowClear="True"
+                        BorderColor="White"
+                        TitleColor="#283618" />
 
                     <material:TextField Title="Date Of Birth"
-AccentColor="Black"
-Text="{Binding DateOfBirth}"
-BackgroundColor="White"
-AllowClear="True"
-BorderColor="Black"
-TitleColor="#283618" />
+                        AccentColor="White"
+                        Text="{Binding DateOfBirth}"
+                        BackgroundColor="#80FFFFFF"
+                        AllowClear="True"
+                        BorderColor="#80FFFFFF"
+                        TitleColor="#283618" />
 
-                    <Button Margin="0,5,0,0" WidthRequest="200" Text="Submit" Command="{Binding OnSubmitClickedCommand}" />
+                    <Button Margin="0,5,0,0" WidthRequest="200" Text="Submit" Command="{Binding SubmitCommand}" />
+                </VerticalStackLayout>
 
-            </VerticalStackLayout>
-             
-        </Frame>
+            </Frame>
 
-            <StackLayout Spacing="6" Margin="0,10,0,0">
-                <Label HorizontalOptions="Center" Text=" Add Direct Relation" />
-                <Button Text="Add" WidthRequest="200" Command="{Binding OnDirectRelationClickedCommand}"/>
-                <Label HorizontalOptions="Center" Text=" Add InDirect Relation"/>
-                <Button Text="Add" WidthRequest="200"/>
+            <StackLayout Spacing="6" Margin="0,10,0,0" HorizontalOptions="Center" Orientation="Horizontal">
+
+                <Button Text="Add direct" BackgroundColor="#023e8a" TextColor="White" WidthRequest="200" Command="{Binding DirectRelationCommand}" />
+
+                <Button Text="Add Indirect" BackgroundColor="#023e8a" TextColor="White" WidthRequest="200" Command="{Binding InDirectRelationCommand}"  />
+
+                <Button Text="Show Data" WidthRequest="200" BackgroundColor="#023e8a" TextColor="White" Command="{Binding ShowDataCommand}"/>
             </StackLayout>
 
         </VerticalStackLayout>
-    
-
     </ScrollView>
 </ContentPage>
