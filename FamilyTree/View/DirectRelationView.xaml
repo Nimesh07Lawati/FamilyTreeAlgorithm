@@ -2,11 +2,44 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="FamilyTree.View.DirectRelationView"
-             Title="DirectRelationView">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+             xmlns:material="http://schemas.enisn-projects.io/dotnet/maui/uraniumui/material"
+             xmlns:uranium="http://schemas.enisn-projects.io/dotnet/maui/uraniumui"
+             BackgroundImageSource="background.png">
+    <VerticalStackLayout VerticalOptions="CenterAndExpand">
+
+        <Frame WidthRequest="600" Margin="0,5,0,0" BackgroundColor="#80FFFFFF" Padding="20" CornerRadius="15">
+        <VerticalStackLayout Spacing="6">
+            
+            <material:TextField Title="Relation Type"
+AccentColor="Black"
+Text="{Binding RelationType}"
+BackgroundColor="#80FFFFFF"
+AllowClear="True"
+BorderColor="Black"
+TitleColor="#283618" />
+            <material:TextField Title="First Person Id"
+AccentColor="Black"
+Text="{Binding FirstPersonID}"
+BackgroundColor="#80FFFFFF"
+AllowClear="True"
+BorderColor="Black"
+TitleColor="#283618" />
+            <material:TextField Title="Second Person Id"
+AccentColor="Black"
+Text="{Binding SecondPersonID}"
+BackgroundColor="#80FFFFFF"
+AllowClear="True"
+BorderColor="Black"
+TitleColor="#283618" />
+            
+        </VerticalStackLayout>
+            
+            
+        </Frame>
+        <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Padding="10">
+        <Button Text="Submit " WidthRequest="200" Margin="0,0,6,0" Command="{Binding SubmitDirectRelationCommand }"/>
+        <Button Text=" Go Back " WidthRequest="200" Command="{Binding GoBackCommand }"/>
+        </StackLayout>
+
     </VerticalStackLayout>
 </ContentPage>

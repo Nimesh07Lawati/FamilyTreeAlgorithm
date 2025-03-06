@@ -57,6 +57,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\Images\background.png" />
 	  <None Remove="Resources\Images\family_tree.jpg" />
 	</ItemGroup>
 
@@ -76,6 +77,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiXaml Update="View\DAtaPageView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="View\DirectRelationView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
