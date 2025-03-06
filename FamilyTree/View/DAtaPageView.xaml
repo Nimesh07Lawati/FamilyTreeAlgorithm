@@ -2,30 +2,49 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="FamilyTree.View.DAtaPageView"
-            >
+             BackgroundImageSource="background.png">
 
     <VerticalStackLayout Padding="20" Spacing="10">
 
-        <Label 
-            Text="This is your database. All tables are shown below."
-            FontSize="18"
-            FontAttributes="Bold"
-            HorizontalOptions="Center" />
 
-        <CollectionView ItemsSource="{Binding Database}">
+        <StackLayout HorizontalOptions="Center" Orientation="Horizontal" Spacing="6">
+            <!-- Load Data Button -->
+        <Button Text="Load Data" WidthRequest="200" Command="{Binding LoadPersonEntitiesCommand}" />
+        <Button Text="Load Data" WidthRequest="200" Command="{Binding LoadDirectRelationCommand}" />
+        <Button Text="Load Data" WidthRequest="200" Command="{Binding LoadIndirectRelationCommand}" />
+            <Button Text="Go Back" WidthRequest="200" Command="{Binding GoBackCommand}" />
+
+        </StackLayout>
+
+        <!-- CollectionView displaying the data -->
+
+        <Frame HeightRequest="400" WidthRequest="400" BackgroundColor="#80FFFFFF"  >
+            <ScrollView>
+        <CollectionView ItemsSource="{Binding PersonEntities}">
             <CollectionView.ItemTemplate>
-                <DataTemplate>
-                    <Frame Padding="10" Margin="5" BackgroundColor="#F5F5F5" CornerRadius="10">
-                        <VerticalStackLayout>
-                            <Label Text="{Binding Id}" FontAttributes="Bold" />
-                            <Label Text="{Binding Name}" />
-                            <Label Text="{Binding Description}" />
-                        </VerticalStackLayout>
-                    </Frame>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Frame Padding="8" Margin="5" BackgroundColor="#80FFFFFF" CornerRadius="10">
+                                <VerticalStackLayout Spacing="10">
+                                    <Label Text="{Binding PersonName}" TextColor="red"/>
+                                    <Label Text="{Binding Gender}" />
+                                </VerticalStackLayout>
+                            </Frame>
+                        </DataTemplate>
+
+                    </CollectionView.ItemTemplate>
         </CollectionView>
-        <Button Text="Go Back" Command="{Binding GoBackCommand}"/>
+        </ScrollView>
+        <!-- Go Back Button -->
+        </Frame>
+        <StackLayout HorizontalOptions="Center" Orientation="Horizontal" Spacing="6">
+            <!-- Load Data Button -->
+            <Button Text="Delete personal" WidthRequest="200" Command="{Binding LoadPersonEntitiesCommand}" />
+            <Button Text="Delete Direct" WidthRequest="200" Command="{Binding LoadDirectRelationCommand}" />
+            <Button Text="Delete Indirect" WidthRequest="200" Command="{Binding LoadIndirectRelationCommand}" />
+            <Button Text="Go Back" WidthRequest="200" Command="{Binding GoBackCommand}" />
+
+        </StackLayout>
+
     </VerticalStackLayout>
 
 </ContentPage>

@@ -14,7 +14,7 @@
                 <VerticalStackLayout Spacing="10" VerticalOptions="Center">
                     <Label Text="Add Person" TextColor="White" FontAttributes="Bold" HorizontalOptions="Center"/>
 
-                    
+
 
                     <material:TextField Title="Name"
                         AccentColor="White"
@@ -65,4 +65,4 @@
 
         </VerticalStackLayout>
     </ScrollView>
-</ContentPage>
+</ContentPage> 
