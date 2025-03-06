@@ -9,7 +9,11 @@ public partial class DataPageViewModel : BindableObject
 {
 	private readonly DataBaseHelper _dataBaseHelper;
 	public ICommand GoBackCommand { get; }
-	public ObservableCollection<PersonEntity> PersonEntities { get; set; }
+    public ICommand LoadPersonEntitiesCommand { get; }
+    public ICommand LoadDirectRelationsCommand { get; }
+    public ICommand LoadInDirectRelationsCommand { get; }
+   
+    public ObservableCollection<PersonEntity> PersonEntities { get; set; }
     public ObservableCollection<DirectRelation> DirectRelations { get; set; }
     public ObservableCollection<IndirectRelation> IndirectRelations { get; set; }
     public DataPageViewModel()
@@ -19,7 +23,10 @@ public partial class DataPageViewModel : BindableObject
 		_dataBaseHelper = new DataBaseHelper();
 		DirectRelations= new ObservableCollection<DirectRelation>();
 		IndirectRelations= new ObservableCollection<IndirectRelation>();
-	}
+        LoadPersonEntitiesCommand = new Command(OnShowEntitesClicked);
+        LoadInDirectRelationsCommand = new Command(OnShowInDirectRelationClicked);
+        LoadDirectRelationsCommand = new Command(OnShowDirectRelationClicked);
+    }
 	private void OnGoBackClicked()
 	{
 		Shell.Current.GoToAsync("///MainPage");

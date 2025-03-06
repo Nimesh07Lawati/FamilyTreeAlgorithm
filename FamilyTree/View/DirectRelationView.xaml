@@ -11,25 +11,25 @@
         <VerticalStackLayout Spacing="6">
             
             <material:TextField Title="Relation Type"
-AccentColor="Black"
+AccentColor="White"
 Text="{Binding RelationType}"
 BackgroundColor="#80FFFFFF"
 AllowClear="True"
-BorderColor="Black"
+BorderColor="White"
 TitleColor="#283618" />
             <material:TextField Title="First Person Id"
-AccentColor="Black"
+AccentColor="White"
 Text="{Binding FirstPersonID}"
 BackgroundColor="#80FFFFFF"
 AllowClear="True"
-BorderColor="Black"
+BorderColor="White"
 TitleColor="#283618" />
             <material:TextField Title="Second Person Id"
-AccentColor="Black"
+AccentColor="White"
 Text="{Binding SecondPersonID}"
 BackgroundColor="#80FFFFFF"
 AllowClear="True"
-BorderColor="Black"
+BorderColor="White"
 TitleColor="#283618" />
             
         </VerticalStackLayout>
